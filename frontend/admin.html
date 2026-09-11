@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Control Panel — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE <span style="font-size: 0.75rem; color: var(--danger); margin-left: 0.25rem;">ADMIN</span></span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item active"><a href="#adminOverview"><i class="fas fa-chart-line"></i> Analytics Overview</a></li>
+        <li class="sidebar-item"><a href="#docVerificationSection"><i class="fas fa-user-check"></i> Doctor Verifications</a></li>
+        <li class="sidebar-item"><a href="#usersSection"><i class="fas fa-users-cog"></i> Manage Users</a></li>
+        <li class="sidebar-item"><a href="#txSection"><i class="fas fa-file-invoice-dollar"></i> Platform Billing</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800;">HEALTHCARE Platform Control Panel</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Monitor platform growth metrics, approve doctors, and audit transactions.</p>
+      </div>
+
+      <!-- KPI Analytics Cards -->
+      <div class="stats-grid" id="adminOverview">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-primary"><i class="fas fa-users"></i></div>
+          <div class="stat-details">
+            <h4 id="adminTotalUsers">0</h4>
+            <p>Total Registered Patients</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-info"><i class="fas fa-user-md"></i></div>
+          <div class="stat-details">
+            <h4 id="adminTotalDoctors">0</h4>
+            <p>Verified Doctors</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-success"><i class="fas fa-crown"></i></div>
+          <div class="stat-details">
+            <h4 id="adminActiveSubs">0</h4>
+            <p>Active Subscriptions</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-warning"><i class="fas fa-wallet"></i></div>
+          <div class="stat-details">
+            <h4 id="adminTotalRevenue">₹0</h4>
+            <p>Total Platform Revenue</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SVG Platform Growth Analytics Chart -->
+      <div class="dashboard-card-section">
+        <div class="card-header-flex">
+          <h3>Platform Growth & Subscription Revenue Analytics</h3>
+        </div>
+        <div style="padding: 1rem 0;">
+          <svg viewBox="0 0 800 200" style="width: 100%; height: 180px; background: #F8FAFC; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <!-- Grid Lines -->
+            <line x1="0" y1="40" x2="800" y2="40" stroke="#E2E8F0" stroke-dasharray="4" />
+            <line x1="0" y1="90" x2="800" y2="90" stroke="#E2E8F0" stroke-dasharray="4" />
+            <line x1="0" y1="140" x2="800" y2="140" stroke="#E2E8F0" stroke-dasharray="4" />
+
+            <!-- Revenue Trend Curve -->
+            <path d="M 40 150 Q 200 120 400 70 T 760 30" fill="none" stroke="var(--primary)" stroke-width="4" />
+            <path d="M 40 150 Q 200 120 400 70 T 760 30 L 760 180 L 40 180 Z" fill="rgba(15, 76, 129, 0.08)" />
+
+            <!-- Data Dots -->
+            <circle cx="40" cy="150" r="5" fill="var(--secondary)" />
+            <circle cx="240" cy="115" r="5" fill="var(--secondary)" />
+            <circle cx="440" cy="65" r="5" fill="var(--secondary)" />
+            <circle cx="640" cy="45" r="5" fill="var(--secondary)" />
+            <circle cx="760" cy="30" r="6" fill="var(--primary)" />
+
+            <!-- Month Labels -->
+            <text x="30" y="195" font-size="11" fill="#64748B">May</text>
+            <text x="230" y="195" font-size="11" fill="#64748B">Jun</text>
+            <text x="430" y="195" font-size="11" fill="#64748B">Jul</text>
+            <text x="630" y="195" font-size="11" fill="#64748B">Aug</text>
+            <text x="750" y="195" font-size="11" fill="#0F4C81" font-weight="bold">Sep 2026</text>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Doctor Verification Section -->
+      <div class="dashboard-card-section" id="docVerificationSection">
+        <div class="card-header-flex">
+          <h3>Doctor Verification & Profiles</h3>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Doctor</th>
+                <th>Specialization & Qualification</th>
+                <th>Hospital</th>
+                <th>Fee</th>
+                <th>Verification</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminDoctorsTable">
+              <tr><td colspan="6" style="text-align: center; padding: 2rem;">Loading doctors list...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Manage Users Section -->
+      <div class="dashboard-card-section" id="usersSection">
+        <div class="card-header-flex">
+          <h3>Registered Users Management</h3>
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>User Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Subscription Plan</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="adminUsersTable">
+              <tr><td colspan="6" style="text-align: center; padding: 2rem;">Loading users...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar Navigation (Desktop) -->
+    <aside class="dashboard-sidebar">
+      <div>
+        <ul class="sidebar-menu">
+          <li class="sidebar-item active"><a href="/dashboard.html"><i class="fas fa-columns"></i> Overview</a></li>
+          <li class="sidebar-item"><a href="/doctors.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+          <li class="sidebar-item"><a href="/appointments.html"><i class="fas fa-calendar-alt"></i> My Appointments</a></li>
+          <li class="sidebar-item"><a href="/chat.html"><i class="fas fa-comments"></i> Messages</a></li>
+          <li class="sidebar-item"><a href="/subscriptions.html"><i class="fas fa-crown"></i> Subscription</a></li>
+          <li class="sidebar-item"><a href="/transactions.html"><i class="fas fa-receipt"></i> Transaction History</a></li>
+          <li class="sidebar-item"><a href="/profile.html"><i class="fas fa-cog"></i> Profile Settings</a></li>
+        </ul>
+      </div>
+
+      <div style="background: var(--primary-light); padding: 1rem; border-radius: var(--radius-md); text-align: center;">
+        <i class="fas fa-headset" style="font-size: 1.6rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+        <h4 style="font-size: 0.9rem; font-family: var(--font-heading);">Need Support?</h4>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem;">Our care team is available 24/7</p>
+        <button onclick="Toast.show('Connecting to care support...', 'info')" class="btn btn-outline" style="padding: 0.35rem 0.75rem; font-size: 0.78rem; width: 100%; background: white;">Contact Support</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div style="display: flex; align-items: center; gap: 1.25rem;">
+          <img id="dashUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" alt="Avatar" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
+          <div class="welcome-info">
+            <h2 id="dashWelcomeTitle">Welcome back, User</h2>
+            <p id="dashSubBannerText">Current Plan: Loading plan status...</p>
+          </div>
+        </div>
+        <div>
+          <a href="/subscriptions.html" class="btn" style="background: white; color: var(--primary); font-weight: 700;">
+            <i class="fas fa-crown" style="color: var(--warning);"></i> Manage Subscription
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-primary"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-details">
+            <h4 id="dashUpcomingCount">0</h4>
+            <p>Upcoming Appointments</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-success"><i class="fas fa-crown"></i></div>
+          <div class="stat-details">
+            <h4 id="dashSubStatusBadge">Active</h4>
+            <p>Subscription Status</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-info"><i class="fas fa-comments"></i></div>
+          <div class="stat-details">
+            <h4 id="dashMessageCount">2</h4>
+            <p>Active Consult Chats</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-warning"><i class="fas fa-file-medical"></i></div>
+          <div class="stat-details">
+            <h4>100%</h4>
+            <p>Digital Health Records</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Action Cards -->
+      <div class="dashboard-card-section">
+        <div class="card-header-flex">
+          <h3>Quick Healthcare Actions</h3>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+          
+          <a href="/doctors.html" style="background: var(--primary-light); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: var(--primary); transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-search-location" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">Find Doctor</h4>
+          </a>
+
+          <a href="/appointments.html" style="background: var(--secondary-light); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: var(--secondary-hover); transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-calendar-alt" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">My Appointments</h4>
+          </a>
+
+          <a href="/chat.html" style="background: var(--accent-light); padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: var(--accent-hover); transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-comments" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">Doctor Chat</h4>
+          </a>
+
+          <a href="/video-call.html?room=meet-cardio-99812" style="background: #F3E8FF; padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: #9333EA; transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-video" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">Video Call</h4>
+          </a>
+
+          <a href="/subscriptions.html" style="background: #FEF3C7; padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: #D97706; transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-crown" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">Subscription</h4>
+          </a>
+
+          <a href="/transactions.html" style="background: #F1F5F9; padding: 1.25rem; border-radius: var(--radius-md); text-align: center; color: var(--text-main); transition: var(--transition-fast);" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='none'">
+            <i class="fas fa-receipt" style="font-size: 1.8rem; margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 0.95rem; font-family: var(--font-heading);">Billing</h4>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Upcoming Appointments Table Section -->
+      <div class="dashboard-card-section">
+        <div class="card-header-flex">
+          <h3>Upcoming Appointments</h3>
+          <a href="/appointments.html" class="btn btn-outline" style="padding: 0.35rem 0.85rem; font-size: 0.85rem;">View All</a>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Doctor</th>
+                <th>Specialization</th>
+                <th>Date & Time</th>
+                <th>Consultation Type</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="dashUpcomingTable">
+              <tr><td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">Loading upcoming consultations...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <a href="/dashboard.html" class="mobile-nav-item active"><i class="fas fa-columns"></i><span>Home</span></a>
+    <a href="/doctors.html" class="mobile-nav-item"><i class="fas fa-user-md"></i><span>Doctors</span></a>
+    <a href="/appointments.html" class="mobile-nav-item"><i class="fas fa-calendar-alt"></i><span>Appts</span></a>
+    <a href="/chat.html" class="mobile-nav-item"><i class="fas fa-comments"></i><span>Chat</span></a>
+    <a href="/subscriptions.html" class="mobile-nav-item"><i class="fas fa-crown"></i><span>Plans</span></a>
+  </nav>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HD Video Consultation — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/call.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <div class="call-page-container">
+    
+    <!-- Call Header Info Overlay -->
+    <div class="call-header-overlay">
+      <div class="call-doctor-badge">
+        <img id="callPeerPhoto" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400" style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover;">
+        <div>
+          <strong id="callPeerName" style="font-size: 0.95rem; display: block;">Dr. Rajesh Sharma</strong>
+          <span style="font-size: 0.78rem; opacity: 0.8;"><i class="fas fa-shield-alt" style="color: #38BDF8;"></i> Encrypted Consultation</span>
+        </div>
+      </div>
+
+      <div class="call-timer-pill" id="callTimerPill">
+        <i class="fas fa-circle" style="font-size: 0.6rem; color: var(--success); animation: pulse-ring 1.5s infinite;"></i>
+        <span id="callTimerText">00:00</span>
+      </div>
+    </div>
+
+    <!-- Main Video Grid Container -->
+    <div class="video-grid-container">
+      <video id="remoteVideo" class="main-remote-video" autoplay playsinline></video>
+      
+      <!-- Placeholder when remote stream initializing -->
+      <div class="remote-placeholder" id="remotePlaceholder">
+        <img id="placeholderAvatar" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400" class="remote-avatar">
+        <h3 id="placeholderName">Dr. Rajesh Sharma</h3>
+        <p style="font-size: 0.9rem; color: #94A3B8;"><i class="fas fa-wifi" style="color: var(--success);"></i> Connecting secure HD WebRTC video media stream...</p>
+      </div>
+
+      <!-- Picture-In-Picture Self Local Video -->
+      <div class="pip-local-video-container">
+        <video id="localVideo" class="pip-local-video" autoplay playsinline muted></video>
+      </div>
+    </div>
+
+    <!-- Bottom Controls Toolbar -->
+    <div class="call-controls-bar">
+      <button class="control-btn" id="toggleAudioBtn" title="Mute/Unmute Mic" onclick="toggleAudio()">
+        <i class="fas fa-microphone"></i>
+      </button>
+
+      <button class="control-btn" id="toggleVideoBtn" title="Turn Camera On/Off" onclick="toggleVideo()">
+        <i class="fas fa-video"></i>
+      </button>
+
+      <button class="control-btn" id="shareScreenBtn" title="Share Screen" onclick="toggleScreenShare()">
+        <i class="fas fa-desktop"></i>
+      </button>
+
+      <button class="control-btn end-call" title="End Consultation Call" onclick="endCall()">
+        <i class="fas fa-phone-slash"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/webrtc.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Portal — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE <span style="font-size: 0.75rem; color: var(--secondary); margin-left: 0.25rem;">DOCTOR</span></span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Layout -->
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item active"><a href="/doctor-dashboard.html"><i class="fas fa-columns"></i> Doctor Overview</a></li>
+        <li class="sidebar-item"><a href="/chat.html"><i class="fas fa-comments"></i> Patient Chats</a></li>
+        <li class="sidebar-item"><a href="/profile.html"><i class="fas fa-user-edit"></i> Doctor Profile</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      
+      <!-- Welcome Banner with Online Toggle -->
+      <div class="welcome-banner" style="background: linear-gradient(135deg, #0EA5E9 0%, #0F4C81 100%);">
+        <div style="display: flex; align-items: center; gap: 1.25rem;">
+          <img id="docAvatar" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=400" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid white;">
+          <div class="welcome-info">
+            <h2 id="docWelcomeName">Welcome, Dr. Specialist</h2>
+            <p id="docSpecializationText">Cardiology • Apollo Heart Institute</p>
+          </div>
+        </div>
+        <div>
+          <button id="onlineToggleBtn" onclick="toggleOnlineStatus()" class="btn" style="background: white; color: var(--success); font-weight: 700;">
+            <i class="fas fa-circle"></i> Online & Accepting Patients
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-primary"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-details">
+            <h4 id="docTodayApptsCount">0</h4>
+            <p>Today's Appointments</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-success"><i class="fas fa-wallet"></i></div>
+          <div class="stat-details">
+            <h4 id="docEarningsText">₹12,450</h4>
+            <p>Total Consult Earnings</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-info"><i class="fas fa-user-friends"></i></div>
+          <div class="stat-details">
+            <h4 id="docTotalPatientsCount">238</h4>
+            <p>Total Patients Served</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-warning"><i class="fas fa-star"></i></div>
+          <div class="stat-details">
+            <h4>4.9 ★</h4>
+            <p>Average Patient Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Patient Appointment Requests List -->
+      <div class="dashboard-card-section">
+        <div class="card-header-flex">
+          <h3>Patient Appointments & Consultations</h3>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Type</th>
+                <th>Scheduled Date & Time</th>
+                <th>Payment Status</th>
+                <th>Appointment Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="docApptsTable">
+              <tr><td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">Loading patient appointments...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/doctor-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Profile — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Profile Content -->
+  <main style="max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem;" id="docProfileContainer">
+    <div style="text-align: center; padding: 4rem; color: var(--text-muted);">
+      <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+      <p style="margin-top: 1rem;">Loading Doctor Profile...</p>
+    </div>
+  </main>
+
+  <!-- Appointment Booking Modal -->
+  <div id="bookingModal" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 5000; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); width: 100%; max-width: 500px; padding: 2rem; position: relative;">
+      
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">Book Consultation</h3>
+        <i class="fas fa-times" onclick="closeBookingModal()" style="cursor: pointer; opacity: 0.7; font-size: 1.2rem;"></i>
+      </div>
+
+      <form id="bookingForm">
+        <input type="hidden" id="bookDoctorId">
+
+        <div style="background: var(--primary-light); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 1rem;">
+          <img id="bookDocPhoto" src="" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+          <div>
+            <strong id="bookDocName" style="display: block; font-size: 1rem;">Doctor Name</strong>
+            <span id="bookDocFee" style="font-size: 0.85rem; color: var(--primary); font-weight: 700;">₹0 Consultation Fee</span>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Consultation Type</label>
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem;">
+            <label style="border: 1px solid var(--border-color); padding: 0.6rem; border-radius: var(--radius-md); text-align: center; cursor: pointer; font-size: 0.85rem;">
+              <input type="radio" name="consultType" value="video" checked> <i class="fas fa-video" style="color: #9333EA;"></i> Video
+            </label>
+            <label style="border: 1px solid var(--border-color); padding: 0.6rem; border-radius: var(--radius-md); text-align: center; cursor: pointer; font-size: 0.85rem;">
+              <input type="radio" name="consultType" value="audio"> <i class="fas fa-phone-alt" style="color: var(--accent);"></i> Audio
+            </label>
+            <label style="border: 1px solid var(--border-color); padding: 0.6rem; border-radius: var(--radius-md); text-align: center; cursor: pointer; font-size: 0.85rem;">
+              <input type="radio" name="consultType" value="chat"> <i class="fas fa-comments" style="color: var(--secondary);"></i> Chat
+            </label>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Preferred Date</label>
+            <input type="date" id="bookDate" required style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Time Slot</label>
+            <select id="bookTime" required style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+              <option value="09:30 AM">09:30 AM</option>
+              <option value="10:30 AM">10:30 AM</option>
+              <option value="11:30 AM">11:30 AM</option>
+              <option value="02:00 PM">02:00 PM</option>
+              <option value="03:30 PM">03:30 PM</option>
+              <option value="04:30 PM">04:30 PM</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Symptoms / Reason for Visit (Optional)</label>
+          <textarea id="bookNotes" rows="2" placeholder="Briefly describe your symptoms..." style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;" id="bookSubmitBtn">
+          Confirm Appointment
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/doctor-profile.js"></script>
+</body>
+</html>

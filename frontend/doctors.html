@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Marketplace & Search — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .doctor-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition-normal);
+    }
+    .doctor-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+      border-color: var(--secondary);
+    }
+    .doctor-photo-box {
+      height: 200px;
+      position: relative;
+      background: #F1F5F9;
+    }
+    .doctor-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main style="max-width: 1280px; margin: 0 auto; padding: 2.5rem 1.5rem;">
+    
+    <div style="margin-bottom: 2rem;">
+      <h1 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin-bottom: 0.5rem;">Find Top Medical Specialists</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">Search and book online video, audio, or instant chat consultations with verified healthcare doctors.</p>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div style="background: white; padding: 1.5rem; border-radius: var(--radius-xl); border: 1px solid var(--border-color); box-shadow: var(--shadow-md); margin-bottom: 2.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; align-items: center;">
+        
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.35rem;">Search Doctor or Hospital</label>
+          <div style="position: relative;">
+            <input type="text" id="filterSearch" placeholder="Name, hospital, symptom..." style="width: 100%; padding: 0.65rem 0.85rem 0.65rem 2.2rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+            <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+          </div>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.35rem;">Specialization</label>
+          <select id="filterSpec" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+            <option value="All">All Specializations</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Neurology">Neurology</option>
+            <option value="Orthopedics">Orthopedics</option>
+            <option value="General Physician">General Physician</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.35rem;">Minimum Rating</label>
+          <select id="filterRating" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+            <option value="">Any Rating</option>
+            <option value="4.5">4.5★ & Above</option>
+            <option value="4.8">4.8★ & Above</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.35rem;">Max Fee (₹)</label>
+          <select id="filterFee" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+            <option value="">Any Fee</option>
+            <option value="600">Under ₹600</option>
+            <option value="800">Under ₹800</option>
+            <option value="1000">Under ₹1000</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Doctor Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem;" id="doctorsGrid">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--text-muted);">
+        <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+        <p style="margin-top: 1rem;">Loading verified medical doctors...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/doctors.js"></script>
+</body>
+</html>

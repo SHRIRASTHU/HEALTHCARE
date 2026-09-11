@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transaction History — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="/dashboard.html"><i class="fas fa-columns"></i> Overview</a></li>
+        <li class="sidebar-item"><a href="/doctors.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+        <li class="sidebar-item"><a href="/appointments.html"><i class="fas fa-calendar-alt"></i> My Appointments</a></li>
+        <li class="sidebar-item"><a href="/chat.html"><i class="fas fa-comments"></i> Messages</a></li>
+        <li class="sidebar-item"><a href="/subscriptions.html"><i class="fas fa-crown"></i> Subscription</a></li>
+        <li class="sidebar-item active"><a href="/transactions.html"><i class="fas fa-receipt"></i> Transaction History</a></li>
+        <li class="sidebar-item"><a href="/profile.html"><i class="fas fa-cog"></i> Profile Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Billing & Transactions</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Review your subscription payments, invoices, and transaction receipts</p>
+      </div>
+
+      <div class="dashboard-card-section">
+        <div class="card-header-flex">
+          <h3>Payment History Records</h3>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Transaction ID</th>
+                <th>Subscription Plan</th>
+                <th>Amount Paid</th>
+                <th>Payment Method</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Invoice</th>
+              </tr>
+            </thead>
+            <tbody id="transactionsTableBody">
+              <tr><td colspan="7" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">Loading transaction history...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/transactions.js"></script>
+</body>
+</html>

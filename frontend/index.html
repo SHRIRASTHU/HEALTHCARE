@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEALTHCARE — Telemedicine, Specialist Marketplace & AI Assistant</title>
+  <meta name="description" content="Connect with trusted doctors, book video consultations, chat with healthcare professionals, and get intelligent AI health guidance.">
+  
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/" class="nav-link active">Home</a></li>
+        <li><a href="/doctors.html" class="nav-link">Doctors</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+        <li><a href="/subscriptions.html" class="nav-link">Subscriptions</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+      </ul>
+
+      <div class="nav-actions" id="navActions">
+        <a href="/login.html" class="btn btn-outline">Login</a>
+        <a href="/register.html" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="badge badge-info" style="margin-bottom: 1rem; padding: 0.4rem 0.85rem; font-size: 0.85rem;">
+          <i class="fas fa-shield-alt"></i> 24/7 Verified Telemedicine Platform
+        </div>
+        <h1>Healthcare, <span>Whenever You Need It.</span></h1>
+        <p class="hero-subtitle">
+          Connect with top-rated medical specialists, book video consultations, chat in real-time, and get instant intelligent guidance from our AI Health Assistant.
+        </p>
+        <div class="hero-cta">
+          <a href="/doctors.html" class="btn btn-primary" style="padding: 0.85rem 1.8rem; font-size: 1.05rem;">
+            <i class="fas fa-search"></i> Find a Doctor
+          </a>
+          <a href="/register.html" class="btn btn-outline" style="padding: 0.85rem 1.8rem; font-size: 1.05rem;">
+            Get Started
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h3>500+</h3>
+            <p>Verified Doctors</p>
+          </div>
+          <div class="stat-item">
+            <h3>50,000+</h3>
+            <p>Happy Patients</p>
+          </div>
+          <div class="stat-item">
+            <h3>4.9 ★</h3>
+            <p>Platform Rating</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-card-preview">
+          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Doctor Video Consultation" class="hero-img">
+          
+          <div class="floating-badge top-left">
+            <div style="background: #10B981; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-video"></i>
+            </div>
+            <div>
+              <strong style="font-size: 0.9rem; display: block;">Live Consultation</strong>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">HD Audio & Video Call</span>
+            </div>
+          </div>
+
+          <div class="floating-badge bottom-right">
+            <div style="background: #0EA5E9; color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div>
+              <strong style="font-size: 0.9rem; display: block;">HEALTHCARE AI</strong>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">24/7 Health Assistant</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Healthcare Services Section -->
+  <section class="services-section" id="services">
+    <div class="section-header">
+      <h2>Comprehensive Care at Your Fingertips</h2>
+      <p>Explore world-class telemedicine services designed for speed, privacy, and convenience.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-user-md"></i></div>
+        <h3>Doctor Consultation</h3>
+        <p>Book online consultations with certified cardiologists, dermatologists, pediatricians, and general physicians.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background: var(--secondary-light); color: var(--secondary);"><i class="fas fa-comments"></i></div>
+        <h3>Instant Chat</h3>
+        <p>Real-time messaging with your doctor regarding symptoms, prescriptions, and medical follow-ups.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background: var(--accent-light); color: var(--accent);"><i class="fas fa-phone-alt"></i></div>
+        <h3>Audio Consultation</h3>
+        <p>Direct audio calls with doctors for fast, convenient diagnoses without requiring video streams.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background: #F3E8FF; color: #9333EA;"><i class="fas fa-video"></i></div>
+        <h3>Video Consultation</h3>
+        <p>Zoom-style secure HD video consultations with interactive chat and screen sharing capabilities.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background: #FEF3C7; color: #D97706;"><i class="fas fa-robot"></i></div>
+        <h3>AI Health Assistant</h3>
+        <p>Get instant preliminary guidance, symptom evaluation, and first-aid instructions powered by HEALTHCARE AI.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon" style="background: #FEE2E2; color: #DC2626;"><i class="fas fa-calendar-check"></i></div>
+        <h3>Appointment Booking</h3>
+        <p>Schedule, reschedule, or cancel consultations seamlessly based on real-time doctor availability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" style="padding: 5rem 2rem; background: white; border-top: 1px solid var(--border-color);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="section-header">
+        <h2>How HEALTHCARE Works</h2>
+        <p>Get medical care in 3 quick steps from the comfort of your home.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; text-align: center;">
+        <div style="padding: 1.5rem;">
+          <div style="width: 64px; height: 64px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 700; margin: 0 auto 1.25rem;">1</div>
+          <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Create Account & Subscribe</h3>
+          <p style="color: var(--text-muted);">Register your profile and pick a affordable weekly, monthly, or yearly care plan.</p>
+        </div>
+
+        <div style="padding: 1.5rem;">
+          <div style="width: 64px; height: 64px; background: var(--secondary-light); color: var(--secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 700; margin: 0 auto 1.25rem;">2</div>
+          <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Choose Your Doctor</h3>
+          <p style="color: var(--text-muted);">Browse specialists by qualification, ratings, experience, and consultation fee.</p>
+        </div>
+
+        <div style="padding: 1.5rem;">
+          <div style="width: 64px; height: 64px; background: var(--accent-light); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: 700; margin: 0 auto 1.25rem;">3</div>
+          <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem;">Consult & Recover</h3>
+          <p style="color: var(--text-muted);">Connect via video, audio, or instant chat and receive digital prescriptions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscriptions Section Preview -->
+  <section style="padding: 5rem 2rem; background: var(--background);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+      <div class="section-header">
+        <h2>Transparent & Affordable Subscriptions</h2>
+        <p>Select a care plan that fits your family healthcare needs.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: center;">
+        
+        <!-- Weekly -->
+        <div style="background: white; border-radius: var(--radius-xl); padding: 2.5rem 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">WEEKLY PASS</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">₹199</span>
+            <span style="color: var(--text-muted);">/ week</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-muted);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Doctor Instant Chat</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Basic Consultation Access</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Digital Health Records</li>
+          </ul>
+          <a href="/subscriptions.html" class="btn btn-outline" style="width: 100%;">Choose Weekly</a>
+        </div>
+
+        <!-- Monthly (Popular) -->
+        <div style="background: white; border-radius: var(--radius-xl); padding: 3rem 2rem; border: 2px solid var(--secondary); box-shadow: var(--shadow-xl); position: relative;">
+          <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 0.25rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">
+            MOST POPULAR
+          </div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem;">MONTHLY CARE</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 2.8rem; font-weight: 800; color: var(--primary);">₹499</span>
+            <span style="color: var(--text-muted);">/ month</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-main);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Unlimited Doctor Chat</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Audio Consultation</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> HD Video Consultation</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Priority Support</li>
+          </ul>
+          <a href="/subscriptions.html" class="btn btn-primary" style="width: 100%;">Choose Monthly</a>
+        </div>
+
+        <!-- Yearly -->
+        <div style="background: white; border-radius: var(--radius-xl); padding: 2.5rem 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">YEARLY FAMILY</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 2.5rem; font-weight: 800; color: var(--primary);">₹3999</span>
+            <span style="color: var(--text-muted);">/ year</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-muted);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Unlimited Doctor Communication</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Priority Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Audio & Video Consultations</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Family Health Records</li>
+          </ul>
+          <a href="/subscriptions.html" class="btn btn-outline" style="width: 100%;">Choose Yearly</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: #0F172A; color: white; padding: 4rem 2rem 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+    <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+      <div>
+        <div class="brand-logo" style="color: white; margin-bottom: 1rem;">
+          <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+          <span>HEALTHCARE</span>
+        </div>
+        <p style="color: #94A3B8; font-size: 0.9rem; line-height: 1.6;">
+          Modern telemedicine technology platform empowering patients and doctors worldwide.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-heading); margin-bottom: 1rem; color: white;">Quick Links</h4>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.5rem; color: #94A3B8; font-size: 0.9rem;">
+          <li><a href="/doctors.html">Find Doctors</a></li>
+          <li><a href="/subscriptions.html">Subscription Plans</a></li>
+          <li><a href="/login.html">Patient Login</a></li>
+          <li><a href="/register.html">Doctor Signup</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--font-heading); margin-bottom: 1rem; color: white;">Contact Us</h4>
+        <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 0.5rem;"><i class="fas fa-envelope"></i> support@healthcare.com</p>
+        <p style="color: #94A3B8; font-size: 0.9rem;"><i class="fas fa-phone-alt"></i> +91 1800-420-9000 (Toll Free)</p>
+      </div>
+    </div>
+
+    <div style="max-width: 1280px; margin: 0 auto; border-top: 1px solid #1E293B; padding-top: 1.5rem; text-align: center; color: #64748B; font-size: 0.85rem;">
+      &copy; 2026 HEALTHCARE Inc. All rights reserved. Medical advice generated by AI is for educational guidance only.
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+</body>
+</html>

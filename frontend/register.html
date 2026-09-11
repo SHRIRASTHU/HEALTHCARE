@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — HEALTHCARE Telemedicine</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="background: linear-gradient(135deg, #F0F7FF 0%, #E0F2FE 100%); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Register Card -->
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem;">
+    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); width: 100%; max-width: 520px; padding: 2.5rem 2rem;">
+      
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--text-main);">Create Account</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Join HEALTHCARE for instant telemedicine consultations</p>
+      </div>
+
+      <!-- Role Selector Toggle -->
+      <div style="display: flex; background: var(--background); padding: 0.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+        <button type="button" id="roleUserBtn" onclick="setRole('user')" class="btn" style="flex: 1; border-radius: var(--radius-sm); font-size: 0.88rem; background: var(--primary); color: white;">
+          Patient Account
+        </button>
+        <button type="button" id="roleDoctorBtn" onclick="setRole('doctor')" class="btn" style="flex: 1; border-radius: var(--radius-sm); font-size: 0.88rem; background: transparent; color: var(--text-muted);">
+          Doctor Account
+        </button>
+      </div>
+
+      <form id="registerForm">
+        <input type="hidden" id="regRole" value="user">
+
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Full Name</label>
+          <input type="text" id="regName" placeholder="e.g. Dr. Alex Morgan or Sarah Jenkins" required style="width: 100%; padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.92rem;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Email Address</label>
+            <input type="email" id="regEmail" placeholder="name@domain.com" required style="width: 100%; padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.92rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Phone Number</label>
+            <input type="tel" id="regPhone" placeholder="+91 9876543210" style="width: 100%; padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.92rem;">
+          </div>
+        </div>
+
+        <!-- Doctor Only Extra Fields -->
+        <div id="doctorExtraFields" style="display: none; background: var(--primary-light); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1rem; border: 1px solid var(--secondary-light);">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-bottom: 0.85rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600;">Specialization</label>
+              <select id="regSpecialization" style="width: 100%; padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem;">
+                <option value="Cardiology">Cardiology</option>
+                <option value="Pediatrics">Pediatrics</option>
+                <option value="Dermatology">Dermatology</option>
+                <option value="Neurology">Neurology</option>
+                <option value="Orthopedics">Orthopedics</option>
+                <option value="General Physician">General Physician</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600;">Qualification</label>
+              <input type="text" id="regQualification" placeholder="e.g. MD, MBBS" style="width: 100%; padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem;">
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600;">Experience (Years)</label>
+              <input type="number" id="regExperience" placeholder="8" style="width: 100%; padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.82rem; font-weight: 600;">Hospital/Clinic</label>
+              <input type="text" id="regHospital" placeholder="Apollo Heart Clinic" style="width: 100%; padding: 0.6rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem;">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Password</label>
+            <input type="password" id="regPassword" placeholder="••••••••" required style="width: 100%; padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.92rem;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Confirm Password</label>
+            <input type="password" id="regConfirmPassword" placeholder="••••••••" required style="width: 100%; padding: 0.7rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.92rem;">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;" id="regSubmitBtn">
+          Create Account
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+        Already have an account? <a href="/login.html" style="color: var(--primary); font-weight: 600;">Sign In</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function setRole(role) {
+      document.getElementById('regRole').value = role;
+      const userBtn = document.getElementById('roleUserBtn');
+      const docBtn = document.getElementById('roleDoctorBtn');
+      const extraFields = document.getElementById('doctorExtraFields');
+
+      if (role === 'doctor') {
+        docBtn.style.background = 'var(--primary)';
+        docBtn.style.color = 'white';
+        userBtn.style.background = 'transparent';
+        userBtn.style.color = 'var(--text-muted)';
+        extraFields.style.display = 'block';
+      } else {
+        userBtn.style.background = 'var(--primary)';
+        userBtn.style.color = 'white';
+        docBtn.style.background = 'transparent';
+        docBtn.style.color = 'var(--text-muted)';
+        extraFields.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

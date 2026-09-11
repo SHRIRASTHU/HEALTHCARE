@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — HEALTHCARE Telemedicine</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body style="background: linear-gradient(135deg, #F0F7FF 0%, #E0F2FE 100%); min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Login Card Container -->
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem;">
+    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); border: 1px solid var(--border-color); width: 100%; max-width: 440px; padding: 2.5rem 2rem;">
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--text-main);">Welcome Back</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Sign in to access your consultations and health dashboard</p>
+      </div>
+
+      <!-- Quick Demo Account Buttons -->
+      <div style="background: var(--primary-light); padding: 0.85rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; text-align: center;">
+        <span style="font-size: 0.78rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 0.5rem;">Instant 1-Click Demo Login:</span>
+        <div style="display: flex; gap: 0.4rem; justify-content: center;">
+          <button onclick="fillDemo('patient@healthcare.com')" class="btn btn-outline" style="padding: 0.35rem 0.65rem; font-size: 0.78rem; background: white;">Patient</button>
+          <button onclick="fillDemo('doctor@healthcare.com')" class="btn btn-outline" style="padding: 0.35rem 0.65rem; font-size: 0.78rem; background: white;">Doctor</button>
+          <button onclick="fillDemo('admin@healthcare.com')" class="btn btn-outline" style="padding: 0.35rem 0.65rem; font-size: 0.78rem; background: white;">Admin</button>
+        </div>
+      </div>
+
+      <form id="loginForm">
+        <div style="margin-bottom: 1.25rem;">
+          <label style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.35rem;">Email Address</label>
+          <div style="position: relative;">
+            <input type="email" id="loginEmail" placeholder="e.g. patient@healthcare.com" required style="width: 100%; padding: 0.75rem 1rem 0.75rem 2.4rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.95rem;">
+            <i class="fas fa-envelope" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <label style="font-size: 0.88rem; font-weight: 600;">Password</label>
+            <a href="#" onclick="Toast.show('Password reset link sent to registered email address.', 'info')" style="font-size: 0.8rem; color: var(--primary); font-weight: 500;">Forgot password?</a>
+          </div>
+          <div style="position: relative;">
+            <input type="password" id="loginPassword" placeholder="••••••••" required style="width: 100%; padding: 0.75rem 2.4rem 0.75rem 2.4rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.95rem;">
+            <i class="fas fa-lock" style="position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted);"></i>
+            <i class="fas fa-eye" id="togglePasswordBtn" style="position: absolute; right: 0.85rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); cursor: pointer;"></i>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; color: var(--text-muted);">
+            <input type="checkbox" id="rememberMe" checked> Remember me
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;" id="loginSubmitBtn">
+          Sign In
+        </button>
+      </form>
+
+      <div style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+        Don't have an account? <a href="/register.html" style="color: var(--primary); font-weight: 600;">Create Account</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    function fillDemo(email) {
+      document.getElementById('loginEmail').value = email;
+      document.getElementById('loginPassword').value = 'Password123!';
+      Toast.show(`Demo credentials loaded for ${email}`, 'success');
+    }
+
+    document.getElementById('togglePasswordBtn').addEventListener('click', function() {
+      const passInput = document.getElementById('loginPassword');
+      if (passInput.type === 'password') {
+        passInput.type = 'text';
+        this.classList.replace('fa-eye', 'fa-eye-slash');
+      } else {
+        passInput.type = 'password';
+        this.classList.replace('fa-eye-slash', 'fa-eye');
+      }
+    });
+  </script>
+</body>
+</html>

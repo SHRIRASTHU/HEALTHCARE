@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments Manager — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Header Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="/dashboard.html"><i class="fas fa-columns"></i> Overview</a></li>
+        <li class="sidebar-item"><a href="/doctors.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+        <li class="sidebar-item active"><a href="/appointments.html"><i class="fas fa-calendar-alt"></i> My Appointments</a></li>
+        <li class="sidebar-item"><a href="/chat.html"><i class="fas fa-comments"></i> Messages</a></li>
+        <li class="sidebar-item"><a href="/subscriptions.html"><i class="fas fa-crown"></i> Subscription</a></li>
+        <li class="sidebar-item"><a href="/transactions.html"><i class="fas fa-receipt"></i> Transaction History</a></li>
+        <li class="sidebar-item"><a href="/profile.html"><i class="fas fa-cog"></i> Profile Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+        <div>
+          <h1 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">My Consultations</h1>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Manage your upcoming video, audio, and chat appointments</p>
+        </div>
+        <a href="/doctors.html" class="btn btn-primary">
+          <i class="fas fa-plus"></i> Book Consultation
+        </a>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div style="display: flex; gap: 0.5rem; border-bottom: 2px solid var(--border-color); margin-bottom: 2rem;">
+        <button class="btn" id="tabConfirmed" onclick="switchApptTab('confirmed')" style="border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: var(--primary); color: white;">
+          Upcoming Consultations
+        </button>
+        <button class="btn" id="tabCompleted" onclick="switchApptTab('completed')" style="border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: transparent; color: var(--text-muted);">
+          Past / Completed
+        </button>
+        <button class="btn" id="tabCancelled" onclick="switchApptTab('cancelled')" style="border-radius: var(--radius-sm) var(--radius-sm) 0 0; background: transparent; color: var(--text-muted);">
+          Cancelled
+        </button>
+      </div>
+
+      <!-- Appointments List Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem;" id="appointmentsGrid">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--text-muted);">
+          <i class="fas fa-circle-notch fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+          <p style="margin-top: 1rem;">Loading consultations...</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/appointments.js"></script>
+</body>
+</html>

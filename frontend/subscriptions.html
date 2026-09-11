@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscriptions & Pricing — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main style="max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem;">
+    
+    <div style="text-align: center; max-width: 700px; margin: 0 auto 3.5rem;">
+      <span class="badge badge-info" style="margin-bottom: 0.75rem; padding: 0.4rem 1rem; font-size: 0.85rem;">
+        <i class="fas fa-crown"></i> HEALTHCARE Membership Plans
+      </span>
+      <h1 style="font-family: var(--font-heading); font-size: 2.5rem; font-weight: 800; margin-bottom: 0.75rem;">Unlock Unlimited Doctor Access</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">Choose a subscription plan to book appointments, start direct doctor chats, and request HD video consultations.</p>
+    </div>
+
+    <!-- Active Subscription Status Banner -->
+    <div id="activeSubBanner" style="background: white; border-radius: var(--radius-xl); border: 2px solid var(--primary); padding: 1.5rem 2rem; margin-bottom: 3rem; display: flex; align-items: center; justify-content: space-between; box-shadow: var(--shadow-md);">
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Current Subscription Status</span>
+        <h3 id="currentSubTitle" style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary);">Checking plan status...</h3>
+        <p id="currentSubExpiry" style="font-size: 0.88rem; color: var(--text-muted);">Please log in to view active membership details.</p>
+      </div>
+      <div>
+        <a href="/transactions.html" class="btn btn-outline"><i class="fas fa-receipt"></i> Billing History</a>
+      </div>
+    </div>
+
+    <!-- Pricing Cards Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: center;">
+      
+      <!-- Weekly -->
+      <div style="background: white; border-radius: var(--radius-xl); padding: 2.5rem 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">WEEKLY PASS</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 2.6rem; font-weight: 800; color: var(--primary);">₹199</span>
+            <span style="color: var(--text-muted);">/ 7 days</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.92rem; color: var(--text-muted);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Doctor Instant Chat</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Basic Consultation Access</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Digital Health Records</li>
+          </ul>
+        </div>
+        <button onclick="initiateCheckout('weekly')" class="btn btn-outline" style="width: 100%;">Choose Weekly Pass</button>
+      </div>
+
+      <!-- Monthly (Most Popular) -->
+      <div style="background: white; border-radius: var(--radius-xl); padding: 3rem 2rem; border: 2px solid var(--secondary); box-shadow: var(--shadow-xl); position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div style="position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--secondary); color: white; padding: 0.25rem 1.2rem; border-radius: 20px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;">
+          MOST POPULAR
+        </div>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem;">MONTHLY CARE</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 3rem; font-weight: 800; color: var(--primary);">₹499</span>
+            <span style="color: var(--text-muted);">/ 30 days</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.95rem; color: var(--text-main);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Unlimited Doctor Chat</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Priority Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Audio Consultation</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> HD Video Consultation</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Digital Health Records</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Priority Support</li>
+          </ul>
+        </div>
+        <button onclick="initiateCheckout('monthly')" class="btn btn-primary" style="width: 100%; padding: 0.85rem;">Choose Monthly Care</button>
+      </div>
+
+      <!-- Yearly -->
+      <div style="background: white; border-radius: var(--radius-xl); padding: 2.5rem 2rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.4rem;">YEARLY FAMILY</h3>
+          <div style="margin: 1.25rem 0; font-family: var(--font-heading);">
+            <span style="font-size: 2.6rem; font-weight: 800; color: var(--primary);">₹3999</span>
+            <span style="color: var(--text-muted);">/ year</span>
+          </div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.92rem; color: var(--text-muted);">
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Unlimited Doctor Communication</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Priority Appointment Booking</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Audio & Video Consultations</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Family Health Records</li>
+            <li><i class="fas fa-check-circle" style="color: var(--success); margin-right: 0.5rem;"></i> Save 35% Overall Value</li>
+          </ul>
+        </div>
+        <button onclick="initiateCheckout('yearly')" class="btn btn-outline" style="width: 100%;">Choose Yearly Family</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Checkout & Payment Summary Modal -->
+  <div id="checkoutModal" style="display: none; position: fixed; inset: 0; background: rgba(15,23,42,0.6); backdrop-filter: blur(4px); z-index: 5000; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); width: 100%; max-width: 480px; padding: 2rem;">
+      
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.3rem;">Order Summary & Checkout</h3>
+        <i class="fas fa-times" onclick="closeCheckoutModal()" style="cursor: pointer; opacity: 0.7;"></i>
+      </div>
+
+      <div style="background: var(--background); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Plan Selected:</span>
+          <strong id="summaryPlanName">Monthly Care</strong>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">Base Price:</span>
+          <span id="summaryBasePrice">₹499.00</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <span style="color: var(--text-muted);">GST (18%):</span>
+          <span id="summaryTax">₹89.82</span>
+        </div>
+        <div style="border-top: 1px solid var(--border-color); padding-top: 0.5rem; display: flex; justify-content: space-between; font-size: 1.1rem;">
+          <strong>Total Amount:</strong>
+          <strong id="summaryTotalAmount" style="color: var(--primary);">₹588.82</strong>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem;">Payment Method</label>
+        <select id="payMethodSelect" style="width: 100%; padding: 0.75rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+          <option value="UPI / Razorpay">UPI (Google Pay, PhonePe, Paytm)</option>
+          <option value="Credit / Debit Card">Credit / Debit Card</option>
+          <option value="NetBanking">NetBanking</option>
+        </select>
+      </div>
+
+      <button onclick="processSubscriptionPayment()" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;" id="paySubmitBtn">
+        <i class="fas fa-lock"></i> Pay Securely Now
+      </button>
+
+      <p style="text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem;">
+        <i class="fas fa-shield-alt"></i> 256-Bit Encryption • Configurable Payment Gateway
+      </p>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/subscriptions.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telemedicine Chat — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Chat App Container -->
+  <div class="chat-container">
+    
+    <!-- Contacts Sidebar -->
+    <aside class="chat-contacts-sidebar">
+      <div class="contacts-header">
+        <h3>Consultations Chat</h3>
+        <div class="contact-search-box">
+          <input type="text" id="chatSearchInput" placeholder="Search doctor or patient...">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+
+      <ul class="contacts-list" id="contactsList">
+        <li style="text-align: center; padding: 2rem; color: var(--text-muted);">
+          <i class="fas fa-circle-notch fa-spin"></i> Loading contacts...
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Chat Window -->
+    <main class="chat-main-view" id="chatMainView">
+      
+      <!-- Active Chat Header -->
+      <div class="chat-header-bar" id="chatHeaderBar" style="display: none;">
+        <div class="chat-active-user">
+          <div class="contact-avatar-box">
+            <img id="activeChatAvatar" src="" class="contact-avatar">
+            <div class="online-status-dot" id="activeStatusDot"></div>
+          </div>
+          <div class="chat-active-info">
+            <h4 id="activeChatName">Doctor Name</h4>
+            <p id="activeChatSubtext">Online • Verified Specialist</p>
+          </div>
+        </div>
+
+        <div class="chat-header-actions">
+          <a href="#" id="launchAudioBtn" class="btn btn-outline" style="padding: 0.5rem 0.85rem; border-radius: 50%; font-size: 1.1rem; color: var(--accent);" title="Audio Consultation">
+            <i class="fas fa-phone-alt"></i>
+          </a>
+          <a href="#" id="launchVideoBtn" class="btn btn-primary" style="padding: 0.5rem 0.85rem; border-radius: 50%; font-size: 1.1rem;" title="Start HD Video Call">
+            <i class="fas fa-video"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Messages Stream -->
+      <div class="chat-messages-area" id="chatMessagesArea">
+        <div style="text-align: center; margin: auto; color: var(--text-muted);">
+          <i class="fas fa-comments" style="font-size: 3.5rem; color: #CBD5E1; margin-bottom: 1rem; display: block;"></i>
+          <h3 style="font-family: var(--font-heading); color: var(--text-main);">Select a Consultation Chat</h3>
+          <p style="font-size: 0.9rem;">Choose a verified doctor from the left sidebar to start real-time messaging.</p>
+        </div>
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typingIndicator" style="display: none; padding: 0.4rem 1.5rem; font-size: 0.8rem; color: var(--text-muted); font-style: italic; background: white;">
+        Doctor is typing...
+      </div>
+
+      <!-- Input Bar -->
+      <form class="chat-input-bar" id="chatInputForm" style="display: none;">
+        <button type="button" class="btn btn-outline" style="border: none; background: none; font-size: 1.2rem; color: var(--text-muted);" onclick="Toast.show('Attachment feature: Select lab report or image', 'info')">
+          <i class="fas fa-paperclip"></i>
+        </button>
+        <input type="text" id="chatMessageInput" placeholder="Type your health query or message..." autocomplete="off" required>
+        <button type="submit" class="btn btn-primary" style="padding: 0.65rem 1.25rem; border-radius: var(--radius-full);">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+
+    </main>
+
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>

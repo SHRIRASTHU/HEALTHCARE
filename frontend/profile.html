@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Settings — HEALTHCARE</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="header-navbar">
+    <div class="navbar-container">
+      <a href="/" class="brand-logo">
+        <div class="brand-icon"><i class="fas fa-notes-medical"></i></div>
+        <span>HEALTHCARE</span>
+      </a>
+
+      <div class="nav-actions" id="navActions">
+        <!-- Rendered by navbar.js -->
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+      <ul class="sidebar-menu">
+        <li class="sidebar-item"><a href="/dashboard.html"><i class="fas fa-columns"></i> Overview</a></li>
+        <li class="sidebar-item"><a href="/doctors.html"><i class="fas fa-user-md"></i> Find Doctor</a></li>
+        <li class="sidebar-item"><a href="/appointments.html"><i class="fas fa-calendar-alt"></i> My Appointments</a></li>
+        <li class="sidebar-item"><a href="/chat.html"><i class="fas fa-comments"></i> Messages</a></li>
+        <li class="sidebar-item"><a href="/subscriptions.html"><i class="fas fa-crown"></i> Subscription</a></li>
+        <li class="sidebar-item"><a href="/transactions.html"><i class="fas fa-receipt"></i> Transaction History</a></li>
+        <li class="sidebar-item active"><a href="/profile.html"><i class="fas fa-cog"></i> Profile Settings</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      
+      <div style="margin-bottom: 2rem;">
+        <h1 style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Account & Profile Settings</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Update your personal details, avatar, and emergency contacts</p>
+      </div>
+
+      <div style="background: white; border-radius: var(--radius-xl); border: 1px solid var(--border-color); padding: 2rem; max-width: 700px; box-shadow: var(--shadow-sm);">
+        <form id="profileForm">
+          
+          <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color);">
+            <img id="profileAvatarPreview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=300" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--secondary);">
+            <div style="flex: 1;">
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Profile Image URL</label>
+              <input type="text" id="profileImageInput" placeholder="https://..." style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.88rem;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Full Name</label>
+              <input type="text" id="profName" required style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Phone Number</label>
+              <input type="tel" id="profPhone" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Date of Birth</label>
+              <input type="date" id="profDob" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+            </div>
+            <div>
+              <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Gender</label>
+              <select id="profGender" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem; background: white;">
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 1.25rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Address</label>
+            <input type="text" id="profAddress" placeholder="123 Health Street, City" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+          </div>
+
+          <div style="margin-bottom: 1.75rem;">
+            <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Emergency Contact Phone</label>
+            <input type="tel" id="profEmergency" placeholder="+91 9876500000" style="width: 100%; padding: 0.65rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); font-size: 0.9rem;">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="padding: 0.75rem 1.5rem;" id="saveProfileBtn">
+            Save Profile Changes
+          </button>
+        </form>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/toast.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/ai-widget.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
