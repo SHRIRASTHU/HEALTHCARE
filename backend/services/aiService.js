@@ -2,13 +2,18 @@ const config = require('../config/config');
 const OpenAI = require('openai');
 
 let openaiClient = null;
-if (config.openaiApiKey && config.openaiApiKey !== 'your_openai_api_key_here') {
-  try {
-    openaiClient = new OpenAI({ apiKey: config.openaiApiKey });
-  } catch (e) {
-    console.warn('OpenAI Client initialization error:', e.message);
+
+const getOpenAIClient = () => {
+  const apiKey = config.openaiApiKey || process.env.OPENAI_API_KEY;
+  if (!openaiClient && apiKey && apiKey !== 'your_openai_api_key_here') {
+    try {
+      openaiClient = new OpenAI({ apiKey });
+    } catch (e) {
+      console.warn('OpenAI Client initialization error:', e.message);
+    }
   }
-}
+  return openaiClient;
+};
 
 // Emergency keywords check
 const EMERGENCY_KEYWORDS = [
@@ -128,8 +133,15 @@ const processAIChat = async (userQuestion, userHistory = []) => {
     return generateMedicalFallbackResponse(userQuestion);
   }
 
-  if (openaiClient) {
+  const client = getOpenAIClient();
+
+  if (client) {
     try {
+      const formattedHistory = (userHistory || []).map(h => ({
+        role: h.role === 'assistant' || h.role === 'bot' ? 'assistant' : 'user',
+        content: h.content || h.message || h.text || ''
+      })).filter(h => h.content && h.content.trim().length > 0);
+
       const messages = [
         {
           role: 'system',
@@ -141,25 +153,35 @@ CRITICAL SAFETY DIRECTIVES:
 4. Provide structured, practical first-aid, self-care, and wellness steps based on trusted medical guidelines (WHO/CDC/NHS).
 5. Suggest relevant medical specializations (e.g. Cardiologist, Dermatologist) when applicable so they can book on HEALTHCARE.`
         },
-        ...userHistory.map(h => ({ role: h.role || 'user', content: h.content || '' })),
+        ...formattedHistory,
         { role: 'user', content: userQuestion }
       ];
 
-      const completion = await openaiClient.chat.completions.create({
+      const completion = await client.chat.completions.create({
         model: 'gpt-3.5-turbo',
         messages,
-        max_tokens: 500,
+        max_tokens: 600,
         temperature: 0.7
       });
 
-      const responseText = completion.choices[0].message.content;
-      return {
-        isEmergency: false,
-        response: responseText
-      };
+      const responseText = completion.choices && completion.choices[0] && completion.choices[0].message
+        ? completion.choices[0].message.content
+        : null;
+
+      if (responseText) {
+        return {
+          isEmergency: false,
+          response: responseText
+        };
+      }
     } catch (err) {
       console.warn('OpenAI API call error, falling back to intelligent response engine:', err.message);
-      return generateMedicalFallbackResponse(userQuestion);
+      const fallback = generateMedicalFallbackResponse(userQuestion);
+      return {
+        isEmergency: fallback.isEmergency,
+        response: fallback.response,
+        apiError: err.message
+      };
     }
   }
 
@@ -168,5 +190,6 @@ CRITICAL SAFETY DIRECTIVES:
 
 module.exports = {
   processAIChat,
-  checkEmergency
+  checkEmergency,
+  generateMedicalFallbackResponse
 };

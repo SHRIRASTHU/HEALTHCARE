@@ -116,13 +116,14 @@ async function handleUserQuestion(question) {
     loadingDiv.remove();
 
     if (data.success) {
+      const responseText = data.aiResponse || data.message || data.response || 'No response content returned.';
       const botDiv = document.createElement('div');
       botDiv.className = `ai-msg ${data.isEmergency ? 'emergency' : 'bot'}`;
-      botDiv.innerHTML = formatMarkdownText(data.aiResponse);
+      botDiv.innerHTML = formatMarkdownText(responseText);
       body.appendChild(botDiv);
 
       aiHistory.push({ role: 'user', content: question });
-      aiHistory.push({ role: 'assistant', content: data.aiResponse });
+      aiHistory.push({ role: 'assistant', content: responseText });
     } else {
       const botDiv = document.createElement('div');
       botDiv.className = 'ai-msg bot';

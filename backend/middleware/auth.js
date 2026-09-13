@@ -38,6 +38,34 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
+const optionalVerifyToken = async (req, res, next) => {
+  let token;
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.query && req.query.token) {
+    token = req.query.token;
+  }
+
+  if (!token) {
+    req.user = null;
+    return next();
+  }
+
+  try {
+    const decoded = jwt.verify(token, config.jwtSecret);
+    if (getIsInMemoryMode()) {
+      const user = getMemoryStore().users.find(u => u._id.toString() === decoded.id || u.id === decoded.id);
+      req.user = user || null;
+    } else {
+      const user = await User.findById(decoded.id).select('-password');
+      req.user = user || null;
+    }
+  } catch (error) {
+    req.user = null;
+  }
+  next();
+};
+
 const authorize = (...roles) => {
   return (req, res, next) => {
     if (!req.user) {
@@ -53,4 +81,4 @@ const authorize = (...roles) => {
   };
 };
 
-module.exports = { verifyToken, authorize };
+module.exports = { verifyToken, optionalVerifyToken, authorize };

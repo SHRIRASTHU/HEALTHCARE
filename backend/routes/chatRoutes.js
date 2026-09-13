@@ -147,4 +147,30 @@ router.post('/send', verifyToken, async (req, res, next) => {
   }
 });
 
+// POST /api/chat endpoint (handles AI chat if no receiverId is present)
+router.post('/', async (req, res, next) => {
+  try {
+    const { receiverId, message, question, prompt, history } = req.body;
+    if (receiverId) {
+      return res.status(400).json({ success: false, message: 'For direct messaging, use POST /api/chat/send' });
+    }
+    const userMessage = question || message || prompt;
+    if (!userMessage || !userMessage.trim()) {
+      return res.status(400).json({ success: false, message: 'Message content cannot be empty' });
+    }
+    const { processAIChat } = require('../services/aiService');
+    const aiResult = await processAIChat(userMessage.trim(), history || []);
+    return res.json({
+      success: true,
+      userQuestion: userMessage,
+      aiResponse: aiResult.response,
+      message: aiResult.response,
+      response: aiResult.response,
+      isEmergency: aiResult.isEmergency
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router;
