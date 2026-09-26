@@ -1,0 +1,88 @@
+HEALTHCARE — Project Overview & Features List
+
+🛠️ Languages & Technologies Used
+
+Frontend (Client-side)
+HTML5: For page structure and semantic layouts.
+CSS3 (Vanilla CSS): Custom styling using CSS design variables, modern healthcare color palette (Medical Blue & Teal), glassmorphism effects, and flex/grid responsive design (no heavy frameworks).
+Vanilla JavaScript (ES6+): Handles dynamic UI rendering, page logic, API calls, and interactive components.
+FontAwesome 6: For medical icons, buttons, and status indicators.
+
+Backend (Server-side)
+Node.js: JavaScript runtime environment for server operations.
+Express.js: Backend web framework for building REST APIs.
+MongoDB & Mongoose: Database for storing users, doctors, appointments, transactions, messages, and notifications. (Includes an automatic in-memory fallback mode so it runs out-of-the-box even without local MongoDB installed).
+Socket.IO: Real-time engine for instant 1-on-1 telemedicine chat messaging and WebRTC call signaling.
+WebRTC: Browser-to-browser peer-to-peer technology for HD Video & Audio calls.
+Bcryptjs & JWT: For password encryption and secure token authentication.
+OpenAI API: Powers the intelligent AI Health Assistant (with a built-in offline medical knowledge engine when API key is not present).
+
+All Features & Functionalities
+
+1. User Authentication & 3 User Roles
+Patient Role (user): Can search doctors, subscribe to plans, book appointments, chat, join video calls, and ask AI questions.
+Doctor Role (doctor): Has a dedicated portal to manage online/offline availability, view patient appointment requests, accept/complete consultations, and start calls.
+Admin Role (admin): Platform control panel to view system statistics, approve/reject doctor verification applications, and activate/deactivate user accounts.
+Security: Passwords encrypted with bcryptjs, JWT session tokens, show/hide password toggle, and 1-click Demo Login buttons for instant testing.
+
+2. Landing Page
+Hero Section: Modern headline "Healthcare, Whenever You Need It", platform statistics counter, and visual preview.
+Healthcare Services: Interactive cards for Doctor Consultation, Instant Chat, Audio Call, Video Call, AI Assistant, and Appointment Booking.
+3-Step Guide: Explains how patients register, choose a doctor, and start consultation.
+Pricing Preview: Showcase of care subscription plans.
+
+3. Doctor Marketplace & Live Search
+Dynamic Search Bar: Search doctors by Name, Hospital, or Symptoms.
+Multi-Filter Options: Filter by Specialization (Cardiology, Pediatrics, Dermatology, Neurology, Orthopedics, General Physician), Rating (4.5★+), Max Fee, and Location.
+Doctor Cards: Displays doctor photo, name, qualification, experience, hospital, fee, ratings, and online/offline status dot.
+Quick Actions: View Profile, Book Appointment, and Direct Chat.
+
+4. Doctor Profile & Slot Selection
+Detailed doctor background, qualification, bio, location, patient reviews, and consultation hours.
+Interactive booking modal allowing patients to select consultation type (Video, Audio, Chat), preferred date, time slot, and reason for visit.
+
+5. Subscription & Payment Gateway
+Care Plans:
+Weekly Pass (₹199 / week): Basic chat & booking.
+Monthly Care (₹499 / month — Most Popular): Unlimited doctor chat, audio/video calls & priority support.
+Yearly Family (₹3999 / year): Full family health access & maximum savings.
+Gated Access: Regular users must have an active subscription to access doctor chat and video booking.
+Payment Summary Modal: Displays base price, 18% GST calculation, total amount, payment method selector (UPI, Credit/Debit Card, NetBanking), and order ID generation.
+
+6. Billing & Transaction History
+Table listing Transaction ID, Plan, Amount Paid, GST, Payment Method, Date, and Status badges (Successful, Pending, Failed, Refunded).
+Interactive Download Invoice / Receipt modal view.
+
+7. Real-Time Telemedicine Chat
+WhatsApp/Telegram-style 1-on-1 telemedicine chat layout powered by Socket.IO.
+Features online/offline indicators, typing indicator ("Doctor is typing..."), message timestamps, read receipts, and direct buttons to launch video or audio calls.
+
+8. Zoom-Style WebRTC Video & Audio Consultation
+HD peer-to-peer video screen showing doctor stream with picture-in-picture local video preview.
+In-Call Toolbar: Mute/Unmute microphone, Camera On/Off toggle, Screen Sharing, and End Call button.
+Call Overlay: Doctor name badge, connection status, and real-time call duration timer.
+
+9. Global Floating AI Health Assistant ("HEALTHCARE AI")
+Floating circular button anchored on the bottom-right corner across all authenticated pages.
+Quick Prompt Pills: One-click questions for Twisted Ankle, Mild Headache, and Minor Cut.
+Safety Guardrails: Prominently displays disclaimers that AI is for educational guidance only.
+Emergency Protection: Automatically detects severe keywords (chest pain, difficulty breathing, stroke, severe bleeding) and displays an urgent Red Emergency Warning card directing the user to dial 108 or 911 immediately.
+
+10. Interactive Notification Bell Dropdown
+Located in the top navigation bar with an unread badge counter.
+Toggles a dropdown showing alerts for confirmed appointments, active subscription updates, and doctor messages.
+Includes a "Mark all as read" button to clear notifications.
+
+11. Doctor Portal Dashboard
+Online/Offline Status Toggle: Doctors can switch status to accept or pause incoming patient bookings.
+Patient Appointment Queue: Table of patient requests with instant buttons to Start HD Video Call, Open Chat, or Mark Completed.
+Earnings & Metrics: Track today's appointments, total earnings (e.g. ₹12,450), total patients served, and average rating.
+
+12. Admin Control Panel Dashboard
+KPI Metrics: Total Patients, Verified Doctors, Active Subscriptions, and Total Revenue.
+Visual SVG Revenue Chart: Smooth curve representing monthly subscription growth.
+Doctor Verification System: Table listing doctor applications with instant Approve or Reject actions.
+User Management: Activate or Deactivate patient accounts
+
+13. Profile Settings
+Allows updating full name, phone number, date of birth, gender, home address, emergency contact phone, and profile avatar image URL.
